@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/admin.css">
+    <script src="https://kit.fontawesome.com/812680a24a.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./script/admin.js" defer></script>
+    <title>Admin</title>
+</head>
+<body>
+    <!-- home page -->
+    <header>
+        <nav id="topnav">
+            <div></div>
+            <div class="btns">
+                <button class="navButton" data-target="#login"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+        </nav>
+        <div class="headercon">
+            <div id="logo">
+                <h1 id="brand">ENERBUBBLES</h1>
+                <span id="brandtwo">LAUNDRY STATION</span>
+            </div>
+        </div>
+<!-- second nav -->
+        <div id="customer-tab">
+            <button class="navtwobtns active online-btn" data-target="#online">ONLINE</button>
+            <button class="navtwobtns" data-target="#walkins">WALK-INS</button>
+            <button class="navtwobtns" data-target="#track">SALES</button>
+            <button class="navtwobtns" data-target="#inventory">INVENTORY</button>
+            <button class="navtwobtns" data-target="#message">MESSAGES</button>
+        </div>
+    </header>
+<div id="online" class="tab">
+
+    <form action="./admin/update.admin.php" method="post" id="update-form">
+        <div>
+            <label for="service_id">Sercvice Id:</label>
+            <input type="text" name="service_id" class="c-info input" required>
+        </div>
+        <div>
+            <select name="status" id="status">
+                <option value="">Status</option>
+                <option value="for pick up">for pickup</option>
+                <option value="washing">Washing</option>
+                <option value="folding">Folding</option>
+                <option value="drying">Drying</option>
+                <option value="for delivery">for delivery</option>
+                <option value="Completed">Completed</option>
+                <option value="CANCELED">Cancel</option>
+            </select>
+        </div>
+        <div>
+            <label for="kilos">Total kilos:</label>
+            <input type="number" name="kilos" class="c-info  input">
+        </div>
+        <div>
+            <label for="paid">Paid:</label>
+            <input type="text" name="paid" class="c-info  input">
+        </div>
+        <button type="submit" id="submitbtn">UPDATE</button>
+    </form>
+    <!-- update button-->
+    <button id="update-btn" data-target="#update-form">UPDATE</button>
+
+    <table id="table">
+       
+    </table>
+   
+</div>
+     <!-- update.php not currently functioning -->
+<div id="walkins" class="tab">
+
+        <form action="./admin/walkins.admin.php" method="POST" id="walkinsform">
+            <label for="laundry"></label> <br>
+            <select name="services" id="services" required>
+                <option value="">Select Service</option>
+                <option value="regularwash">Regular(wash-dry-fold)</option>
+                <option value="specialwash">Special Wash(w/ press)</option>
+                <option value="whitebaby">White or Baby Clothes</option>
+                <option value="comforters">Comforters </option>
+                <option value="blankets">Blankets, Towels, Sweaters</option>
+                <option value="largeitems">Large Items</option>
+                <option value="curtains">Curtains</option>
+                <option value="seatcovers">Seat Covers</option>
+                <option value="barongpina">Barong(Pina)</option>
+                <option value="barongjusi">Barong(Jusi)</option>
+                <option value="suit">Suit</option>
+                <option value="trouserslacks">Trouser/Slacks</option>
+                <option value="weddinggown">Wedding Gown</option>
+                <option value="weddinggownsets">Wedding Gown Sets</option>
+                <option value="simplegown">Simple Gown</option>
+                <option value="specialgown">Special Gown</option>
+                <option value="smallgown">Small Gown</option>
+                <option value="jackets">Jackets</option>
+                <option value="leather">Leather Items</option>
+            </select> 
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" class="c-info input" >
+            </div>
+            <div>
+                <label for="number">Number:</label>
+                <input type="tel" name="number" id="number" class="c-info input" >
+            </div>
+            <div>
+                <label for="housedelivery">House delivery:</label>
+                <input type="checkbox" name="housedelivery" class="c-info  input" >
+            </div>
+            <div>
+                <label for="location">Location:</label>
+                <input type="text" name="location" class="c-info  input" value="none for store pick up" >
+            </div>
+            <div>
+                <label for="kilos">Total kilos:</label>
+                <input type="text" name="kilos" class="c-info  input">
+            </div>
+            <div>
+                <label for="amount">Total amount:</label>
+                <input type="text" name="amount" class="c-info  input">
+            </div>
+            <div>
+                <label for="paid">Paid:</label>
+                <input type="text" name="paid" class="c-info  input">
+            </div>
+            <div>
+                <label for="status">Status:</label>
+                <input type="text" name="status" class="c-info  input">
+            </div>
+            <button type="submit" id="submitbtn">PLACE ORDER</button>
+        </form>
+
+        <button id="addwalkins" data-target="#walkinsform">Add walk-ins</button><br>
+
+        <form action="./admin/update.admin.php" method="post" id="update-form2">
+            <div>
+                <label for="option"></label>
+                <input type="text" name="option" class="tag-walkins" value="walkins">
+            </div>
+            <div>
+                <label for="service_id">Sercvice Id:</label>
+                <input type="text" name="service_id" class="c-info input" required>
+            </div>
+            <div>
+                <select name="status" id="status">
+                    <option value="">Status</option>
+                    <option value="pick up">for pickup</option>
+                    <option value="washing">Washing</option>
+                    <option value="folding">Folding</option>
+                    <option value="drying">Drying</option>
+                    <option value="delivery">ready for delivery</option>
+                    <option value="Completed">Completed</option>
+                    <option value="CANCELED">Cancel</option>
+                </select>
+            </div>
+            <div>
+                <label for="kilos">Total kilos:</label>
+                <input type="number" name="kilos" class="c-info  input">
+            </div>
+            <div>
+                <label for="paid">Paid:</label>
+                <input type="text" name="paid" class="c-info  input">
+            </div>
+            <button type="submit" id="submitbtn">UPDATE</button>
+        </form>
+        <button id="update-btn2" data-target="#update-form2">UPDATE</button>
+       
+        <!-- <div id="walkins-list"></div> -->
+
+        <div id="walkins-details">
+            <table id="table2"></table>
+        </div>
+</div>
+
+    
+
+
+</body>
+</html>
+

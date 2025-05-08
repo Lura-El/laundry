@@ -1,0 +1,77 @@
+*{
+    font-family: 'Pacifico', cursive;   
+}
+#tablehead th{
+    font-size: 1.1rem;
+}
+ #tablehead th, #table td, #table2 td{
+    padding: .3rem;
+    border: 2px solid white;
+    font-family: 'Pacifico', cursive; 
+}
+#table td{
+    font-size: 1rem;
+}
+.tab{
+    display: none;
+    z-index: 1;
+}
+/* online */
+
+/* walkins */
+#walkins{
+    width: 80%;
+    height: 65%;
+    margin: auto auto;
+}
+.tag-walkins{
+    border: unset;
+    background-color: rgb(67, 147, 233);
+    font-size: 1.2rem;
+}
+#walkinsform, #update-form, #update-form2{
+    display: none;
+    position: absolute;
+    margin-top: 3rem;
+    z-index: 1;
+    background-color: rgb(67, 147, 233);
+    padding: .8rem;
+    border-radius: 10px;
+    color: white;
+}
+.input{
+    color: white;
+}
+#services, #status{
+    padding: .2rem;
+    font-size: 1rem;
+    font-family: 'Pacifico', cursive;
+}
+.c-info{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px black solid;
+    padding: .2rem;
+    width: 15rem;
+    margin-top: .5rem;
+}
+#submitbtn,  #update-btn, #update-btn2{
+    margin-top: .4rem;
+    padding: .3rem .5rem;
+    font-size: 1.1rem;
+    border: 1px solid black;
+    color: white;
+    background-color: rgb(67, 147, 233);
+}
+
+#addwalkins, #update-btn, #update-btn2{
+    border: none;
+    border-bottom: black 2px dotted;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(67, 147, 233);
+    background-color: transparent;
+    padding-right: 1.5rem;
+   
+}

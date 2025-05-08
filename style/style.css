@@ -1,0 +1,325 @@
+
+  html{
+    /* background-color: #ddd; */
+    font-family: 'Pacifico', cursive;
+  }
+body{
+    margin: 0 auto;  
+    /* max-width: 75%;   */
+    height: 100vh;
+    align-items: center;
+    background-color: #f2f2f2;
+  }
+#topnav, .navButton {
+    overflow: hidden;
+    background-color: rgb(67, 147, 233);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  */
+  }
+#topnav{
+  display: flex;
+  justify-content: flex-end;
+}
+.navButton {
+    float: left;
+    color:rgb(13, 2, 33);
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    border-style: none;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+.navButton:hover {
+    background-color: #ddd;
+    color: black;
+}
+.navButton.active {
+    background-color:white;
+    color: blue;
+}
+.btns button{
+  height: 3rem;
+  margin: auto;
+  
+}
+/* logo and the row*/
+#logo{
+  margin-left: 1rem;
+}
+.headercon{
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  height: 8rem;
+}
+#brand{
+  font-size: 2.6rem;
+  font-kerning: auto;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  color: rgb(66, 136, 222);
+  font-family: 'Pacifico', cursive; 
+  padding-top: 1rem;
+}
+#brandtwo{
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  margin-top: auto;
+  color: rgb(66, 136, 222); 
+  position: relative;
+  top: -.8rem;
+  left:3rem;
+}
+.info p{
+  font-family: 'Pacifico', cursive;
+  color: rgb(66, 136, 222);
+}
+.sched button{
+  font-size: 1.7rem;
+  border-style: none;
+  background-color: white;
+  font-family: 'Pacifico', cursive; 
+  color: rgb(66, 136, 222);
+  border: 2px solid;
+  border-radius: 3px;
+  margin-top: 2rem;
+  padding: .4rem;
+}
+
+/* second nav */
+.navtwobtns{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  margin-right: 1rem;
+  padding: .5rem;
+}
+.navtwobtns.active{
+  color: white;
+}
+.navtwobtns:hover{
+  background-color: #ddd;
+  color: black;
+}
+#customer-tab{ 
+  display: flex; 
+  justify-content: flex-end; 
+  background-color:rgb(67, 147, 233)
+}
+
+/* main */
+
+div#images{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+#images div{
+  border: solid 1px rgb(66, 136, 222);
+  margin: .2rem;
+}
+#images img{
+  height: 312px;
+  width: 256px;
+  object-fit: cover;
+}
+.tag{
+  font-size: 1.3rem;
+  text-align: center;
+}
+#servicepricing{
+  color:rgb(67, 147, 233);
+  background-color: white;
+  border-top: solid 10px rgb(66, 136, 222);
+  height: 65vh;
+}
+#servicepricing h1{
+  text-align: center;
+}
+#service{
+  display: flex;
+ justify-content:space-evenly;
+ font-size: 1.2rem;
+ 
+}
+#circlehidden{
+  display: none;
+}
+#circle{
+  border-radius: 50%;
+  background-color: rgb(66, 136, 222);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+h1 .kilo{
+  font-size: 1rem;
+  margin-top: 0%;
+}
+
+/* feedback section */
+
+#feedback{
+  background-color: rgb(66, 136, 222);
+  color: white;
+  padding: 3rem 8rem;
+  font-size: 2rem;
+  text-align: center;
+}
+#readmore{
+  font-size: 1rem;
+  color: white;
+}
+
+/* about business */
+#aboutbus{
+  background-color: white;
+  font-size: 1.5rem;
+}
+#aboutcon{
+  display: flex;
+}
+#owner{
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+#aboutbus img{
+  padding: 1.5rem;
+}
+#aboutcon{
+  padding: 3rem 8rem;
+}
+#aboutcon div{
+  padding-top:2.5rem;
+}
+footer{
+  background-color: rgb(66, 136, 222);
+  padding: 1.2rem;
+  color: white;
+  text-align: center;
+}
+
+/* media query */
+
+@media screen and (max-width:1200px) {
+
+  .headercon{
+    display: block;
+    height: 50vh;
+  }
+  .headercon div{
+    position: relative;
+    left: 50px;
+  }
+  #images img{
+    height: 196px;
+    width: 146px;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width:820px) {
+  #service{
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y:hidden;
+    white-space: nowrap;
+  }
+  #images img{
+    height: 196px;
+    width: 146px;
+    object-fit: cover;
+  }
+
+  #servicepricing{
+    height: 50vh;
+  }
+  #service{
+    font-size: 1rem;
+  }
+  
+  #service #circle{
+    display: none;
+  }
+ #feedback{
+    background-color: rgb(66, 136, 222);
+    color: white;
+    padding: 2rem 5rem;
+    font-size: 1.5rem;
+    text-align: center;
+ }
+  #readmore{
+    font-size: 1rem;
+    color: white;
+  }
+  #aboutbus img{
+    padding: 1rem;
+  }
+  #aboutcon{
+    padding: 2rem 4rem;
+    font-size: 1.2rem;
+  }
+ @media screen and (max-width:545px) {
+ 
+  #images img{
+    height: 120px;
+    width: 90px;
+    object-fit: cover;
+  }
+  #images div{
+    font-size: 1rem;
+  }
+  .info p{
+    font-size: .9rem;
+  }
+  .info button{
+    font-size: 1.2rem;
+  }
+  #servicepricing h1{
+    font-size: 1.5rem;
+  }#service{
+    margin-bottom: 1rem;
+  }
+  #servicepricing{
+    padding-left: 1rem;
+    font-size: .8rem;
+    padding-bottom: 13rem;
+  }
+  #circlehidden{
+    border-radius: 50%;
+    background-color: rgb(66, 136, 222);
+    width: 180px;
+    height: 180px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+  #circlecon div{
+    margin: auto auto;
+  }
+  #feedback{
+    font-size: 1.2rem;
+  }
+  #aboutcon img{
+    padding: 0%;
+    margin-left: 20%;
+  }
+  #aboutcon{
+    display: block;
+    font-size: 1rem;
+  }
+ 
+ }
+}

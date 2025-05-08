@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/forms.css">
+    <script src="https://kit.fontawesome.com/812680a24a.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script/index.js" defer></script>
+    <title>Laundry</title>
+</head>
+<body>
+<!-- home page -->
+    <header>
+        <nav id="topnav">
+            <div></div>
+            <div class="btns">
+                <button class="navButton active" data-target="#"><i class="fa-solid fa-house"></i></button>
+                <button class="navButton" data-target="#register"><i class="fa-solid fa-user-plus"></i></button>
+                <button class="navButton" data-target="#login"><i class="fa-solid fa-right-to-bracket"></i></button>
+            </div>
+        </nav>
+        <div class="headercon">
+            <div id="logo">
+                <h1 id="brand">ENERBUBBLES</h1>
+                <span id="brandtwo">LAUNDRY STATION</span>
+            </div>
+            <div class="info">
+                <p><i class="fa-solid fa-phone"></i> 0908-892-3842</p>
+                <p><i class="fa-solid fa-clock"></i> Mon-Sun 7:00AM - 7:00PM</p>
+                <p><i class="fa-solid fa-location-dot"></i> Blk 1 Lot 38 Phase 3, Mainroad Ave.,
+                Maryjomes Subd. Molino 4, Bacoor Cavite</p>
+            </div>
+            <div class="info sched">
+                <button>SCHEDULE PICK-UP</button>
+            </div>
+        </div>
+<!-- second nav -->
+    
+    </header>
+<!-- registration -->
+    <div class="modal" id="register" class="hiddenForm">
+
+        <div>
+            <h3>Please log your email to register</h3>
+        <hr>
+        <form action="forms/register.php" method="POST">
+            <label for="email"></label><br>
+            <input type="email" placeholder="Email" name="email" id="email" required>
+            <label for="password"></label>
+            <input type="password" placeholder="Password" name="password" required> <br>
+            <a id="term">Terms & Conditions</a> <br>
+            <button type="submit" class="btn register-btn">Register</button> <br>
+        </form>
+        </div>
+    </div>
+<!-- login -->
+    <div class="modal" id="login" class="hiddenForm">
+
+        <div>
+            <h3>Please login</h3>
+        <hr>
+        <form action="forms/login.php" method="POST" >
+            <label for="email"></label>
+            <input type="email" name="email" placeholder="Email" required>
+            <label for="password"></label>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <a id="forgetpw">forgot password?</a><br>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        </div>
+    </div>
+<!-- terms and conditions -->
+    <div id="stmt">
+        <h3>Terms & Conditions</h3>
+        To access certain features of the website, you may need to create an account. 
+        You agree to provide accurate and complete information during the registration process and to keep your account information up to date. 
+        We are committed to safeguarding your information, and we employ advanced security measures to protect your personal data.
+        <div><input type="checkbox" id="checkbox"><span>Agree</span></div>
+        <button type="button" class="btn close">Close</button>
+    </div>
+
+    <div id="forgetpwform">
+        <h3>Please log email</h3>
+        <form action="forms/forgetpw.php" method="POST">
+            <label for="email"></label>
+            <input type="email" name="email" placeholder="Email"> <br>
+            <button class="btn" type="submit">Submit</button> <br>
+            <button type="button" class="btn fclose">Close</button>
+        </form>
+    </div>
+    
+    <main>
+         <div id="images">
+            <div><img src="photos/pickup.png" alt="pick up"><div class="tag">Pick up</div></div>
+            <div><img src="photos/washing.png" alt="wash"><div class="tag">Wash</div></div>
+            <div><img src="photos/dry.png" alt="dry"><div class="tag">Dry</div></div>
+            <div><img src="photos/folded.png" alt="fold"><div class="tag">Fold</div></div>
+            <div><img src="photos/deliver.png" alt="delivery"><div class="tag">Deliver</div></div>
+         </div>
+
+         <div id="servicepricing">
+            <h1>Services and Pricing  <p class="kilo">wash + dry + fold = price per kilo</p></h1>
+            <div id="service">
+                <div>
+                    <p>Regular wash - 25</p>
+                    <p>Special wash - 60</p>
+                    <p>Seatcover - 60 </p> 
+                    <p>White and Baby clothes - 50</p>
+                    <p>Curtains - 50 </p>
+                    <p>Blankets - 45</p>
+                </div>
+                <div>
+                    <p>Large items - 45</p>
+                    <p>Barong jusi - 120</p>
+                    <p>Barong pina - 150</p>
+                    <p>Trouser and slacks -130</p>
+                    <p>Jackets - 130</p>
+                    <p>Small gown -180 per piece</p>
+                </div>
+                <div>
+                    <p>Suit - 200 pair</p>
+                    <p>Simple gown - 200 per piece</p>
+                    <p>Special gown - 300 per piece</p>
+                    <p>Leather - 300 per piece</p>
+                    <p>Wedding gown 500 per piece</p>
+                    <p>Wedding gown set - 800</p>
+                </div>
+                <div id="circle">
+                    10kls/up free pickup and deliver 
+                </div>
+            </div>
+            <!-- <div id="serviceother">less than 10kls will be charge equivalent to 10kls only for service includes pickup & delivery</div> -->
+            <div id="circlecon">
+                <div id="circlehidden">
+                10kls/up free pick up and deliver 
+                </div>
+            </div>
+         </div>
+
+         <div id="feedback">
+            <div>
+                "My laundry day is now different, it's more relaxed than ever. Thank you for your service!"
+            <div>-Joy</div>
+            </div>
+            <a href="#" id="readmore">Read more</a>
+        </div>
+
+        <div id="aboutbus">
+            <div id="aboutcon">
+                <img src="photos/owner.jpg" alt="ownerphoto" id="owner">
+                <div>
+                We've been in service for over 15 years, we're committed to continues providing great service for each 
+                customer. We ensure that every clothing is treated with utmost care and value. This platform will help us to advance our service
+                to fulfill our commitment. Thank you!
+                <div>Ms. Metchie - Owner</div>
+                </div>  
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <div>
+            Area of service: Entire Molino 4 and nearest subdivision in Dasmarinas, Cavite.
+        </div>
+        <div>
+            Thank you for visiting our website!
+        </div>
+    </footer>
+</body>
+</html>
