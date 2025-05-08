@@ -29,8 +29,8 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = '4c8e675f472a9e';
-        $phpmailer->Password = '9c23267c5ff2a6';
+        $phpmailer->Username = 'secret';
+        $phpmailer->Password = 'secret';
     
         // Sender and recipient settings
         $phpmailer->setFrom('enerbubbleslaundry@service.com', 'Enurbubbles Laundry Shop');
