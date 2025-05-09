@@ -17,16 +17,19 @@ $(function(){
     });
    
    // book a service 
+
    $('#edit').on('click', function() {
       let targetdiv = $(this).data('target');
       $(targetdiv).toggle();
   });
   
    const defaultcontact = document.querySelector("#defaultcontact div");
+
    if(defaultcontact.textContent !== ""){
       $('#defcon-form').hide();
       $('#defaultcontact').show();
    }
+
    $('#setdefault').on('click', function() {
       if (defaultcontact.textContent !== '') {
           $('#defcon-form').hide();
@@ -35,8 +38,7 @@ $(function(){
    
    //order tracking
 
-
-   function formatDate(date) {
+  function formatDate(date) {
     const dateObj = new Date(date);
     const options = { 
         month: 'short', 
@@ -52,8 +54,9 @@ $(function(){
  
   $('.track').click(function(){
 
-  setInterval( 
-     $.get("/../laundry/customer/order.track.php", function(data) {
+    $.get("/../laundry/customer/order.track.php", function(data) {
+
+      console.log(data);
 
     let orderinfo = "";
 
@@ -62,16 +65,12 @@ $(function(){
       if(filterData.length < 3){
         $("#trackorder").css("height", "50vh");
       }
-   
-      const trackStatuses = document.querySelectorAll('.track-status');
-      const trackCircle = document.querySelector('.s-circle');
 
-     
-        // if(result.status === trackStatus.textContent ){
-        //   trackStatus.classList.add('active');
-        // }
-  
+      const trackStatuses = document.querySelectorAll('.track-status');
+
       data.forEach(result => {
+
+        const date = result.pick_up_time;
 
         if(result.status !== "Completed"){  
           orderinfo += `
@@ -84,18 +83,17 @@ $(function(){
 
       trackStatuses.forEach(trackStatus => {
            
-        if (trackStatus.textContent === result.status) {
-           trackStatus.parentElement.classList.add("active");
-
-        }
+          if (trackStatus.textContent === result.status) {
+            trackStatus.parentElement.classList.add("active");
+          }
       });
      
       $("#ordertracking").html(orderinfo); 
-      }
+        }
       });
 
-      // end for setInterval
-    }), 1000 ); 
+    }) 
+
   })
 
 // history
@@ -112,25 +110,24 @@ $(function(){
         }        
 
           data.forEach(result => {
-         
-            const date = result.pick_up_time;
   
           if(result.status === "Completed"){
-            orderinfo += `
-            <br> Order Id: ${result.service_id} <br>
-            Service: ${result.service} <br>
-            Total kilos: ${result.kilos} <br>
-            Paid amount: ${result.paid} <br>
-            Status: ${result.status} <br>
-        `;
+                orderinfo += `
+                <br> Order Id: ${result.service_id} <br>
+                Service: ${result.service} <br>
+                Total kilos: ${result.kilos} <br>
+                Paid amount: ${result.paid} <br>
+                Status: ${result.status} <br>
+            `;
       
             $("#prevOrders").html(orderinfo);
+
           }else{
             $("#prevOrders").html("No previous order");
           }
   
           });
         }) 
-      })
+     })
 
 })
