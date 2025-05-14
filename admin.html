@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style/admin.css">
     <script src="https://kit.fontawesome.com/812680a24a.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./script/admin.js" defer></script>
     <title>Admin</title>
 </head>
@@ -29,16 +30,16 @@
         <div id="customer-tab">
             <button class="navtwobtns active online-btn" data-target="#online">ONLINE</button>
             <button class="navtwobtns" data-target="#walkins">WALK-INS</button>
-            <button class="navtwobtns" data-target="#track">SALES</button>
-            <button class="navtwobtns" data-target="#inventory">INVENTORY</button>
+            <button class="navtwobtns" data-target="#sales">SALES</button>
+            <button class="navtwobtns inv-nav" data-target="#inventory">INVENTORY</button>
             <button class="navtwobtns" data-target="#message">MESSAGES</button>
         </div>
     </header>
 <div id="online" class="tab">
 
-    <form action="./admin/update.admin.php" method="post" id="update-form">
+    <form action="./admin/update.online.php" method="post" id="update-form">
         <div>
-            <label for="service_id">Sercvice Id:</label>
+            <label for="service_id">Service Id:</label>
             <input type="text" name="service_id" class="c-info input" required>
         </div>
         <div>
@@ -135,11 +136,8 @@
 
         <button id="addwalkins" data-target="#walkinsform">Add walk-ins</button><br>
 
-        <form action="./admin/update.admin.php" method="post" id="update-form2">
-            <div>
-                <label for="option"></label>
-                <input type="text" name="option" class="tag-walkins" value="walkins">
-            </div>
+        <form action="./admin/update.walkins.php" method="post" id="update-form2">
+          
             <div>
                 <label for="service_id">Sercvice Id:</label>
                 <input type="text" name="service_id" class="c-info input" required>
@@ -167,15 +165,71 @@
             <button type="submit" id="submitbtn">UPDATE</button>
         </form>
         <button id="update-btn2" data-target="#update-form2">UPDATE</button>
-       
-        <!-- <div id="walkins-list"></div> -->
 
         <div id="walkins-details">
             <table id="table2"></table>
         </div>
 </div>
 
-    
+<!-- sales -->
+
+<div id="sales" class="tab">
+    <div id="chart"></div>
+</div>
+
+<!-- inventory -->
+
+<div id="inventory" class="tab">
+
+    <form action="./admin/inventory.admin.php" method="post" id="inventory-form">
+        
+        <div class="inv-item">
+            <label for="laundry_basket">Laundry Basket</label><br>
+            <input type="text" name="laundry basket">
+        </div>
+        <div class="inv-item">
+            <label for="hanger">Hanger</label><br>
+            <input type="text" name="hanger">
+        </div>
+        <div class="inv-item">
+            <label for="scatch_tape">Scatch tape</label><br>
+            <input type="text" name="scatch tape">
+        </div>
+        <div class="inv-item">
+            <label for="plastic">Plastic</label><br>
+            <input type="text" name="plastic">
+        </div>
+         <div class="inv-item">
+            <label for="soap_powder">Soap Powder</label><br>
+            <input type="text" name="soap powder">
+        </div>
+        <div class="inv-item">
+            <label for="fabcon">Fabcon</label><br>
+            <input type="text" name="fabcon">
+        </div>
+        <div class="inv-item">
+            <label for="zonrox">Zonrox</label><br>
+            <input type="text" name="zonrox">
+        </div>
+        <div class="inv-item">
+            <label for="name">Check by</label><br>
+            <input type="text" name="name">
+        </div>
+        <div class="inv-item">
+            <label for="note">Note</label><br>
+            <input type="text" name="note">
+        </div>
+        <div class="inv-item">
+            <label for="date">Date</label><br>
+            <input type="date" name="date">
+        </div>
+        <div class="inv-item inv-btn"><button type="submit">UPDATE</button></div>
+    </form>
+
+    <div id="inventory-table">
+        <table id="table3"></table>
+    </div>
+</div>
 
 
 </body>

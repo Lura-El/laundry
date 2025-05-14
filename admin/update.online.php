@@ -3,18 +3,15 @@
 require __DIR__ . '/../inc/connect.db.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    
-    $option = htmlspecialchars($_POST['option']);
+  
     $service_id = htmlspecialchars($_POST['service_id']);
     $kilos = htmlspecialchars($_POST['kilos']);
     $paid = htmlspecialchars($_POST['paid']);
     $status = htmlspecialchars($_POST['status']);
-    
-    $option = empty($option) ? 'customers_order' : 'walkins';
 
     try {
 
-        $get_query = "SELECT kilos, paid, status, amount FROM $option WHERE service_id = :service_id";
+        $get_query = "SELECT kilos, paid, status, amount FROM customers_order WHERE service_id = :service_id";
         $stmt3 = $pdo->prepare($get_query);
         $stmt3->bindParam('service_id', $service_id);
         $stmt3->execute();
@@ -53,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
         if(!empty($kilos)){
 
-            $query_service = "SELECT service from $option where service_id = :service_id";
+            $query_service = "SELECT service from customers_order where service_id = :service_id";
             $stmt2 = $pdo->prepare($query_service);
             $stmt2->bindParam(':service_id', $service_id);
             $stmt2->execute();
@@ -79,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $checkPaid = empty($paid) ? $existingPaid : $paid;
         $checkStatus = empty($status) ? $existingStatus :$status;
 
-        $query = "UPDATE $option
+        $query = "UPDATE customers_order
           SET kilos = :kilos, 
               paid = :paid,
               status = :status,

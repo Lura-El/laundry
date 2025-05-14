@@ -34,6 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
         if ($stmt->execute()) {
             header("Location: /laundry/admin.html");
+            // echo "Successfully submitted.";
         }else{
             echo "Failed to insert the order.";
         }

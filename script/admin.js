@@ -102,13 +102,126 @@ $(function(){
     fetchData("/../laundry/admin/online.admin.php", tableHead, "#table");
     fetchData("/../laundry/admin/walkins.get.admin.php", tableHead2, "#table2");
     
-    setInterval(fetchData, 1000);
+    
+    // setInterval(fetchData, 1000);
 
     $('#addwalkins').on('click', function() {
         let targetdiv = $(this).data('target');
         $(targetdiv).toggle();
     });
 
-    // 
+    inventory
+
+$('.inv-nav').click(function(){
+
+    let tablehead3 = `
+        <thead>
+            <tr id="tablehead">
+                <th>Laundry basket</th>
+                <th>Hanger</th>
+                <th>Scatch tape</th>
+                <th>Plastic</th>
+                <th>Soap Powder</th>
+                <th>Fabcon</th>
+                <th>Zonrox</th>
+                <th>Check by</th>
+                <th>Note</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+    `;
+   
+$.get("/../laundry/admin/inventory.get.php",function(data) {
+        
+        let tableBody = "<tbody>";
+
+        data.forEach(result => {
+     
+            tableBody += "<tr>";
+            Object.values(result).forEach(value => {
+                tableBody += `<td>${value}</td>`;
+                console.log(value);
+            })
+            tableBody += "</tr>";
+        });
+
+        tableBody += "</tbody>";
+
+        console.log(tableBody);
+
+        $('#table3').html(tablehead3 + tableBody);
+    }).fail(function() {
+        console.error("Error: Unable to fetch data.");
+    });
+})
+
+
+// sales
+
+    let walkinsAmount = 0;
+
+    $.get("/../laundry/admin/sales.walkins.php",function(data) { 
+
+        data.forEach(result => {
+            walkinsAmount += Number(result.amount);
+
+        });
+
+        // $('#table3').html(tablehead3 + tableBody);
+
+    }).fail(function() {
+        console.error("Error: Unable to fetch data.");
+    });
+
+     let onlineAmount = 0;
+
+    $.get("/../laundry/admin/sales.online.php",function(data) { 
+
+        data.forEach(result => {
+            onlineAmount += Number(result.amount);
+
+        });
+
+        // $('#table3').html(tablehead3 + tableBody);
+
+    }).fail(function() {
+        console.error("Error: Unable to fetch data.");
+    });
+    
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Online', 'Walk-ins'],
+          ['May', onlineAmount, walkinsAmount],
+        //   ['Feb',  1170,      460],
+        //   ['March',  660,       1120],
+        //   ['April',  1030,      540],
+        //   ['May',  1000,      400],
+        //   ['June',  1170,      460],
+        //   ['July',  660,       1120],
+        //   ['August',  1030,      540],
+        //   ['Sept',  1170,      460],
+        //   ['Oct',  660,       1120],
+        //   ['Nov',  1030,      540],
+        //   ['Dec',  660,       1120]
+        ]);
+
+       var options = {
+        title: "Enerbubbles Sales",
+        width: 900,
+        height: 500,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart'));
+
+        chart.draw(data, options);
+      }
+
 });
+
+
 

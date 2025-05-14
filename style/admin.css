@@ -1,10 +1,13 @@
 *{
-    font-family: 'Pacifico', cursive;   
+    font-family: 'Pacifico', cursive;
+}
+body{
+    background-color: white;
 }
 #tablehead th{
     font-size: 1.1rem;
 }
- #tablehead th, #table td, #table2 td{
+ #tablehead th, #table td, #table2 td, #table3 td{
     padding: .3rem;
     border: 2px solid white;
     font-family: 'Pacifico', cursive; 
@@ -17,6 +20,13 @@
     z-index: 1;
 }
 /* online */
+#table{
+    margin: auto auto;
+}
+#update-btn{ 
+    margin-left: 8rem;
+    margin-bottom: 1rem;
+}
 
 /* walkins */
 #walkins{
@@ -74,4 +84,53 @@
     background-color: transparent;
     padding-right: 1.5rem;
    
+}
+
+/* sales */
+
+#chart div{
+
+    left: 4rem;
+    width: 50rem;
+    height: 50rem;
+}
+/* inventory */
+
+#inventory-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.inv-item label{
+    text-align: center;
+}
+.inv-item input{
+    width:  8rem;
+}
+.inv-item button{
+    border: unset;
+    padding: .6rem;
+    text-align: center;
+    font-size: 1.2rem;
+    background: transparent;
+    
+}
+.inv-item button:hover{
+    color:  rgb(67, 147, 233);
+    background-color: white;
+}
+.inv-btn{
+    margin-left: .6rem;
+}
+#inventory-table{
+    margin-top: 2rem;
+}
+#table3{
+    margin:auto auto;
+    text-align: center;
+}
+tbody tr:hover{
+    background-color:  rgb(67, 147, 233);
+    color: white;
 }
