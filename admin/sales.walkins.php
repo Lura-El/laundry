@@ -6,7 +6,7 @@
     
     try{
 
-        $walkin_amount = "SELECT amount FROM walkins";
+        $walkin_amount = "SELECT * FROM walkins";
         $results_amount = $pdo->query($walkin_amount)->fetchAll(PDO::FETCH_ASSOC);
 
         // $online_amount = "SELECT amount FROM customers_order";

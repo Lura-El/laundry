@@ -76,11 +76,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $checkPaid = empty($paid) ? $existingPaid : $paid;
         $checkStatus = empty($status) ? $existingStatus :$status;
 
+        if($status === "Completed"){
+            $completed_at = date('Y-m-d H:i:s');
+        }
+         
+
         $query = "UPDATE customers_order
           SET kilos = :kilos, 
               paid = :paid,
               status = :status,
-              amount = :amount
+              amount = :amount,
+              completed_at = :completed_at
           WHERE service_id = :service_id";
 
         $stmt = $pdo->prepare($query);
@@ -89,6 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt->bindParam(':paid', $checkPaid);
         $stmt->bindParam(':status', $checkStatus);
         $stmt->bindParam(':amount', $total_amount);
+        $stmt->bindParam(':completed_at', $completed_at);
 
         if ($stmt->execute()){
 

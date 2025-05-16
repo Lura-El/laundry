@@ -9,7 +9,7 @@ body{
 }
  #tablehead th, #table td, #table2 td, #table3 td{
     padding: .3rem;
-    border: 2px solid white;
+    border: 2px solid rgb(67, 147, 233);
     font-family: 'Pacifico', cursive; 
 }
 #table td{
@@ -27,6 +27,9 @@ body{
     margin-left: 8rem;
     margin-bottom: 1rem;
 }
+#update-form{
+    margin-left: 8rem;
+}
 
 /* walkins */
 #walkins{
@@ -39,7 +42,7 @@ body{
     background-color: rgb(67, 147, 233);
     font-size: 1.2rem;
 }
-#walkinsform, #update-form, #update-form2{
+#walkinsform, #update-form, #update-form2, #inventory-form{
     display: none;
     position: absolute;
     margin-top: 3rem;
@@ -66,7 +69,7 @@ body{
     width: 15rem;
     margin-top: .5rem;
 }
-#submitbtn,  #update-btn, #update-btn2{
+#submitbtn,  #update-btn, #update-btn2, #inv-update-btn{
     margin-top: .4rem;
     padding: .3rem .5rem;
     font-size: 1.1rem;
@@ -75,7 +78,7 @@ body{
     background-color: rgb(67, 147, 233);
 }
 
-#addwalkins, #update-btn, #update-btn2{
+#addwalkins, #update-btn, #update-btn2, #inv-update-btn{
     border: none;
     border-bottom: black 2px dotted;
     font-size: 1.5rem;
@@ -96,12 +99,6 @@ body{
 }
 /* inventory */
 
-#inventory-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-}
 .inv-item label{
     text-align: center;
 }

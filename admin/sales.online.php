@@ -6,10 +6,10 @@
     
     try{
 
-        $online_amount = "SELECT amount FROM customers_order";
+        $online_amount = "SELECT * FROM customers_order";
         $results_online = $pdo->query($online_amount)->fetchAll(PDO::FETCH_ASSOC);
 
-        echo json_encode($results_amount);
+        echo json_encode($results_online);
        
 
     }catch(PDOException $e){

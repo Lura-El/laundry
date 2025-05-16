@@ -25,6 +25,8 @@ $(function(){
         let targetdiv = $(this).data('target');
         $(targetdiv).toggle();
     });
+    
+    
 
     function formatDate(date) {
         const dateObj = new Date(date);
@@ -47,13 +49,21 @@ $(function(){
         
         let tableBody = "<tbody>";
 
-        data.forEach(result => {
-            tableBody += "<tr>";
+       data.forEach(result => {
+        tableBody += "<tr>";
             Object.entries(result).forEach(([key, value]) => {
-                tableBody += (key === "pick_up_time") ? `<td>${formatDate(value)}</td>` : `<td>${value}</td>`;
+                if (key === "pick_up_time") {
+                    tableBody += `<td>${formatDate(value)}</td>`;
+                } else if (key === "completed_at") {
+                    // Check if completed_at is null, and replace it with "processing"
+                    tableBody += (value === null) ? `<td>Processing</td>` : `<td>${formatDate(value)}</td>`;
+                } else {
+                    tableBody += `<td>${value}</td>`;
+                }
             });
-            tableBody += "</tr>";
-        });
+        tableBody += "</tr>";
+});
+
 
         tableBody += "</tbody>";
 
@@ -66,18 +76,19 @@ $(function(){
     let tableHead = `
         <thead>
             <tr id="tablehead">
-                <th>Service Id</th>
-                <th>Customer Id</th>
-                <th>Service</th>
-                <th>Name</th>
-                <th>Number</th>
+                <th>LAUNDRY NO.</th>
+                <th>CUS NO.</th>
+                <th>LAUNDRY</th>
+                <th>NAME</th>
+                <th>PHONE</th>
                 <th>Location</th>
-                <th>Pickup</th>
-                <th>Request</th>
-                <th>Status</th>
-                <th>Kilo or Piece</th>
-                <th>Amount</th>
-                <th>Paid</th>
+                <th>P.TIME</th>
+                <th>REQUEST</th>
+                <th>STATUS</th>
+                <th>KILO/PIECE</th>
+                <th>AMOUNT</th>
+                <th>PAID</th>
+                <th>COMPLETED</th>
             </tr>
         </thead>
     `;
@@ -85,16 +96,17 @@ $(function(){
     let tableHead2 = `
         <thead>
             <tr id="tablehead">
-                <th>Service Id</th>
-                <th>Service</th>
-                <th>Name</th>
-                <th>Number</th>
-                <th>House Delivery</th>
-                <th>Location</th>
-                <th>Kilo/Piece</th>
-                <th>Amount</th>
-                <th>Paid</th>
-                <th>Status</th>
+                <th>CUSTOMER NO.</th>
+                <th>LAUNDRY</th>
+                <th>NAME</th>
+                <th>PHONE</th>
+                <th>DELIVERY</th>
+                <th>LOCATION</th>
+                <th>KILO/PIECE</th>
+                <th>AMOUNT</th>
+                <th>PAID</th>
+                <th>STATUS</th>
+                <th>COMPLETED</th>
             </tr>
         </thead>
     `;
@@ -110,7 +122,7 @@ $(function(){
         $(targetdiv).toggle();
     });
 
-    inventory
+   // inventory
 
 $('.inv-nav').click(function(){
 
@@ -147,13 +159,16 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
 
         tableBody += "</tbody>";
 
-        console.log(tableBody);
-
         $('#table3').html(tablehead3 + tableBody);
     }).fail(function() {
         console.error("Error: Unable to fetch data.");
     });
 })
+
+ $('#inv-update-btn').on('click', function() {
+        let targetdiv = $(this).data('target');
+        $(targetdiv).toggle();
+    });
 
 
 // sales
@@ -163,7 +178,10 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
     $.get("/../laundry/admin/sales.walkins.php",function(data) { 
 
         data.forEach(result => {
-            walkinsAmount += Number(result.amount);
+
+            if(result.status == "Completed"){
+                walkinsAmount += Number(result.amount);
+            }
 
         });
 
@@ -178,10 +196,10 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
     $.get("/../laundry/admin/sales.online.php",function(data) { 
 
         data.forEach(result => {
-            onlineAmount += Number(result.amount);
-
+            if(result.status === "Completed"){
+                 onlineAmount += Number(result.amount);
+            }
         });
-
         // $('#table3').html(tablehead3 + tableBody);
 
     }).fail(function() {
