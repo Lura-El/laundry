@@ -89,29 +89,30 @@ body{
    
 }
 
-/* sales */
-
-#chart div{
-
-    left: 4rem;
-    width: 50rem;
-    height: 50rem;
-}
 /* inventory */
-
+#inventory-form{
+    padding:1rem;
+    margin-left: 16rem;
+}
 .inv-item label{
     text-align: center;
 }
 .inv-item input{
-    width:  8rem;
+    width:  10rem;
+    border: none;
+    border-bottom: 2px solid black;
 }
 .inv-item button{
     border: unset;
-    padding: .6rem;
-    text-align: center;
+    padding: .2rem;
     font-size: 1.2rem;
-    background: transparent;
-    
+    background: transparent; 
+    border-bottom: 2px solid black;
+    color: white;
+    margin: .5rem auto auto 1.2rem;
+}
+#inv-update-btn{
+    margin-left: 16rem;
 }
 .inv-item button:hover{
     color:  rgb(67, 147, 233);
@@ -130,4 +131,65 @@ body{
 tbody tr:hover{
     background-color:  rgb(67, 147, 233);
     color: white;
+}
+/* sales */
+#chart{
+    margin:0 0 0 0;
+}
+#sales-nav{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 5px solid rgb(67, 147, 233);
+    align-items: center;
+    margin-right: 10rem;
+    margin-left: 10rem;
+    margin-top: 0%;
+
+}
+.sales-nav-btn{
+    border: unset;
+    background-color: transparent;
+    font-size: 1.3rem;
+    margin-right: 3rem;
+}
+.sales-nav-btn.active{
+    color: rgb(67, 147, 233);
+    padding: .2rem;
+}
+.sales-expenses{
+    display: none;
+    z-index: 1;
+} 
+#exp-update-btn{
+    margin-left: 10rem;
+    background-color: transparent;
+    color: white;
+    background-color: rgb(67, 147, 233);
+    border: unset;
+    padding: .2rem;
+    font-size: 1.2rem;
+    margin-top: .2rem;
+}
+#expenses-form{
+    display: none;
+    z-index: 2;
+    display: block;
+    justify-content: center;
+    margin-left: 10rem;
+    background-color: rgb(67, 147, 233);
+    padding: .5rem;
+    width: 13rem;
+    border-radius: 5px;
+    margin-top: .5rem;
+}
+.expenses input{
+    border: none;
+    border-bottom: 3px solid black;
+}
+.expenses label{
+    color: white;
+}
+.exp-add-btn{
+    margin-top: .3rem;
+    font-size: 1.2rem;
 }

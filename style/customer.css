@@ -114,13 +114,6 @@ footer{
 }
 /* track */
 
-/* #trackvisual{
-    display: none;
-} */
-/* remove this to adjust */
-/* #track-circle line{
-    position: fixed;
-} */
 .line{
    border-bottom: 2px dotted black; 
    width: 33%;

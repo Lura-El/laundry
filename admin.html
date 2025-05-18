@@ -177,8 +177,45 @@
 <!-- sales -->
 
 <div id="sales" class="tab">
-    <div id="chart"></div>
+   
+    <div id="sales-nav">
+        <button class="sales-nav-btn active" data-target="#sales-table">SALES</button>
+        <button class="sales-nav-btn" data-target="#exp-tab">EXPENSES</button>
+    </div>
 
+    <div id="sales-table" class="sales-expenses"></div>
+
+    <div id="exp-tab" class="sales-expenses">
+        <div id="expenses-table"></div>
+
+        <button id="exp-update-btn" data-target="#expenses-form">Add expenses</button><br>
+
+        <form action="./admin/expenses.admin.php" method="post" id="expenses-form">
+            <div class="expenses">
+                <label for="electricity">Electricity</label><br>
+                <input type="text" name="electricity">
+            </div>
+            <div class="expenses">
+                <label for="water">Water</label><br>
+                <input type="text" name="water">
+            </div>
+            <div class="expenses">
+                <label for="labor">Labor</label><br>
+                <input type="text" name="labor">
+            </div>
+            <div class="expenses">
+                <label for="stocks">Stocks</label><br>
+                <input type="text" name="stocks">
+            </div>
+            <div class="expenses">
+                <label for="others">Others</label><br>
+                <input type="text" name="others">
+            </div>
+            <div class="exp-add-btn"><button type="submit">ADD</button></div>
+        </form>
+
+    </div>
+     <div id="chart"></div>
 </div>
 
 <!-- inventory -->

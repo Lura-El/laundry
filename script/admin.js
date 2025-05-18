@@ -173,6 +173,26 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
 
 // sales
 
+    // buttons
+    $('#sales-table').show();
+
+    $('.sales-nav-btn').click(function() {
+
+        $('.sales-nav-btn').removeClass('active'); 
+        $(this).addClass('active');
+        
+        $('.sales-expenses').hide();
+        
+       let targetForm = $(this).data('target');
+       $(targetForm).show();
+    
+    });
+
+     $('#exp-update-btn').on('click', function() {
+        let targetdiv = $(this).data('target');
+        $(targetdiv).toggle();
+    });
+
     let walkinsAmount = 0;
 
     $.get("/../laundry/admin/sales.walkins.php",function(data) { 
