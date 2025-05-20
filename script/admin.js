@@ -184,6 +184,8 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
         $('.sales-expenses').hide();
         
        let targetForm = $(this).data('target');
+       $('#expenses-form').hide();
+
        $(targetForm).show();
     
     });

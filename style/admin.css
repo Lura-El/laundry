@@ -138,12 +138,12 @@ tbody tr:hover{
 }
 #sales-nav{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     border-bottom: 5px solid rgb(67, 147, 233);
     align-items: center;
     margin-right: 10rem;
     margin-left: 10rem;
-    margin-top: 0%;
+    margin-top: 1rem;
 
 }
 .sales-nav-btn{
@@ -172,7 +172,7 @@ tbody tr:hover{
 }
 #expenses-form{
     display: none;
-    z-index: 2;
+    z-index: 1;
     display: block;
     justify-content: center;
     margin-left: 10rem;

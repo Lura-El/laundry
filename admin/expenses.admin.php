@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         $currentMonth = date('F');  
         $currentYear = date('Y');   
-        $monthYearValue = "$currentYear-$currentMonth"; 
+        $monthYearValue = "$currentMonth-$currentYear"; 
 
         $monthYearQuery = "INSERT INTO expenses (month_year) 
                            SELECT :month_year 
@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $labor = empty($labor) ? $existingData['labor'] : $labor;
             $stocks = empty($stocks) ? $existingData['stocks'] : $stocks;
             $others = empty($others) ? $existingData['others'] : $others;
+            $total_expenses = $electricity + $water + $labor + $stocks + $others;
         }
 
         $queryUpdate = "UPDATE expenses
@@ -40,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             water = :water,
                             labor = :labor,
                             stocks = :stocks, 
-                            others = :others
+                            others = :others, 
+                            total_expenses = :total_expenses
                         WHERE month_year = :month_year";
 
         $stmt2 = $pdo->prepare($queryUpdate);
@@ -50,7 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt2->bindParam(':labor', $labor);
         $stmt2->bindParam(':stocks', $stocks);
         $stmt2->bindParam(':others', $others);
+        $stmt2->bindParam(':total_expenses', $total_expenses);
+
         $stmt2->execute();
+
 
         echo "Expenses updated successfully!";
 

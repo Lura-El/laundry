@@ -60,9 +60,12 @@
             <label for="kilos">Total kilos:</label>
             <input type="number" name="kilos" class="c-info  input">
         </div>
-        <div>
-            <label for="paid">Paid:</label>
-            <input type="text" name="paid" class="c-info  input">
+         <div>
+            <select name="paid" id="status">
+            <option value="">Paid</option>
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+        </select>
         </div>
         <button type="submit" id="submitbtn">UPDATE</button>
     </form>
@@ -162,8 +165,11 @@
                 <input type="number" name="kilos" class="c-info  input">
             </div>
             <div>
-                <label for="paid">Paid:</label>
-                <input type="text" name="paid" class="c-info  input">
+                 <select name="paid" id="status">
+                    <option value="">Paid</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
             </div>
             <button type="submit" id="submitbtn">UPDATE</button>
         </form>

@@ -70,7 +70,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if($status === "Completed"){
             date_default_timezone_set('Asia/Taipei');
-            $completed_at = date('Y-m-d H:i:s');
+            $completed_at = date('F-d-y H:i:s');
+        }else if($status === "CANCELED"){
+            $completed_at = "Canceled"; 
+        }else{
+            echo "Invalid output";
         }
          
 
