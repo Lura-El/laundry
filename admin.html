@@ -189,12 +189,17 @@
         <button class="sales-nav-btn" data-target="#exp-tab">EXPENSES</button>
     </div>
 
-    <div id="sales-table" class="sales-expenses"></div>
+    <div id="sales-table" class="sales-expenses">
+        <table id="table4"></table>
+    </div>
 
     <div id="exp-tab" class="sales-expenses">
-        <div id="expenses-table"></div>
 
         <button id="exp-update-btn" data-target="#expenses-form">Add expenses</button><br>
+
+        <div id="expenses-table">
+            <table id="table5"></table>
+        </div>
 
         <form action="./admin/expenses.admin.php" method="post" id="expenses-form">
             <div class="expenses">
@@ -221,7 +226,8 @@
         </form>
 
     </div>
-     <div id="chart"></div>
+     
+    <div id="chart"></div>
 </div>
 
 <!-- inventory -->

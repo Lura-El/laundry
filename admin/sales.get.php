@@ -6,7 +6,7 @@
     
     try{
 
-        $query = "SELECT * FROM inventory ";
+        $query = "SELECT * FROM sales";
         $result = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
         echo json_encode($result);

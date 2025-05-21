@@ -152,7 +152,6 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
             tableBody += "<tr>";
             Object.values(result).forEach(value => {
                 tableBody += `<td>${value}</td>`;
-                console.log(value);
             })
             tableBody += "</tr>";
         });
@@ -173,7 +172,6 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
 
 // sales
 
-    // buttons
     $('#sales-table').show();
 
     $('.sales-nav-btn').click(function() {
@@ -195,63 +193,42 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
         $(targetdiv).toggle();
     });
 
-    let walkinsAmount = 0;
+     let tablehead4 = `
+        <thead>
+            <tr id="tablehead">
+                <th>Month-Year</th>
+                <th>Online sales</th>
+                <th>Walkins sales</th>
+                <th>Gross income</th>
+                <th>Expenses</th>
+                <th>Net income</th>
+            </tr>
+        </thead>
+    `;
+    $.get("/../laundry/admin/sales.get.php",function(data) { 
 
-    $.get("/../laundry/admin/sales.walkins.php",function(data) { 
+    data.forEach(result => {
+        console.log(result.gross_income);
 
-        data.forEach(result => {
+        let monthYear = result.month_year;
+        let gross_income = Number(result.gross_income);
+        let expenses = Number(result.expenses);
+        let netIncome = Number(result.net_income);
 
-            if(result.status == "Completed"){
-                walkinsAmount += Number(result.amount);
-            }
-
-        });
-
-        // $('#table3').html(tablehead3 + tableBody);
-
-    }).fail(function() {
-        console.error("Error: Unable to fetch data.");
-    });
-
-     let onlineAmount = 0;
-
-    $.get("/../laundry/admin/sales.online.php",function(data) { 
-
-        data.forEach(result => {
-            if(result.status === "Completed"){
-                 onlineAmount += Number(result.amount);
-            }
-        });
-        // $('#table3').html(tablehead3 + tableBody);
-
-    }).fail(function() {
-        console.error("Error: Unable to fetch data.");
-    });
-    
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Month', 'Online', 'Walk-ins'],
-          ['May', onlineAmount, walkinsAmount],
-        //   ['Feb',  1170,      460],
-        //   ['March',  660,       1120],
-        //   ['April',  1030,      540],
-        //   ['May',  1000,      400],
-        //   ['June',  1170,      460],
-        //   ['July',  660,       1120],
-        //   ['August',  1030,      540],
-        //   ['Sept',  1170,      460],
-        //   ['Oct',  660,       1120],
-        //   ['Nov',  1030,      540],
-        //   ['Dec',  660,       1120]
+          ['Month-Year', 'Gross Income', 'Expenses', 'Net Income'],
+          [monthYear, gross_income, expenses, netIncome ],
+      
         ]);
 
        var options = {
         title: "Enerbubbles Sales",
         width: 900,
-        height: 500,
+        height: 400,
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };
@@ -260,6 +237,58 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
 
         chart.draw(data, options);
       }
+
+      let tableBody = "<tbody>";
+     
+            tableBody += "<tr>";
+            Object.values(result).forEach(value => {
+                tableBody += `<td>${value}</td>`;
+            })
+            tableBody += "</tr>";
+   
+        tableBody += "</tbody>";
+
+        $('#table4').html(tablehead4 + tableBody);
+
+    });
+
+    }).fail(function() {
+        console.error("Error: Unable to fetch data.");
+    });
+    
+     let tablehead5 = `
+        <thead>
+            <tr id="tablehead">
+                <th>Month-Year</th>
+                <th>ELECTRICITY</th>
+                <th>WATER</th>
+                <th>LABOR</th>
+                <th>STOCKS</th>
+                <th>OTHER EXPENSES</th>
+                <th>TOTAL EXPENSES</th>
+            </tr>
+        </thead>
+    `;
+    $.get("/../laundry/admin/expenses.get.php",function(data) {
+        
+        let tableBody = "<tbody>";
+
+        data.forEach(result => {
+     
+            tableBody += "<tr>";
+            Object.values(result).forEach(value => {
+                tableBody += `<td>${value}</td>`;
+            })
+            tableBody += "</tr>";
+        });
+
+        tableBody += "</tbody>";
+
+        $('#table5').html(tablehead5 + tableBody);
+    }).fail(function() {
+        console.error("Error: Unable to fetch data.");
+    });
+    
 
 });
 

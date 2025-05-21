@@ -6,11 +6,12 @@
     
     try{
 
-        $query = "SELECT * FROM inventory ";
+        $query = "SELECT * FROM expenses";
         $result = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 
         echo json_encode($result);
 
     }catch(PDOException $e){
+
         echo "Error" .  $e->getMessage();
     }

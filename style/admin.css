@@ -7,7 +7,7 @@ body{
 #tablehead th{
     font-size: 1.1rem;
 }
- #tablehead th, #table td, #table2 td, #table3 td{
+ #tablehead th, #table td, #table2 td, #table3 td, #table4 td, #table5 td{
     padding: .3rem;
     border: 2px solid rgb(67, 147, 233);
     font-family: 'Pacifico', cursive; 
@@ -134,7 +134,7 @@ tbody tr:hover{
 }
 /* sales */
 #chart{
-    margin:0 0 0 0;
+    margin-left: 5rem;
 }
 #sales-nav{
     display: flex;
@@ -160,6 +160,11 @@ tbody tr:hover{
     display: none;
     z-index: 1;
 } 
+#table4, #table5{
+    margin: auto auto;
+    text-align: center;
+    margin-top: 1rem;
+}
 #exp-update-btn{
     margin-left: 10rem;
     background-color: transparent;

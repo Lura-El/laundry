@@ -42,15 +42,22 @@ try {
 
     $net_income = $gross_income - $total_expenses;
 
-    $insert_update_query = "INSERT INTO sales (month_year, gross_income, expenses, net_income)
-                            VALUES (:month_year, :gross_income, :expenses, :net_income)
+    var_dump($walkins_total);
+    var_dump($online_total);
+
+    $insert_update_query = "INSERT INTO sales (month_year, online_sales, walkins_sales, gross_income, expenses, net_income)
+                            VALUES (:month_year, :online_sales, :walkins_sales, :gross_income, :expenses, :net_income)
                             ON DUPLICATE KEY UPDATE 
+                            online_sales = VALUES(online_sales),
+                            walkins_sales = VALUES(walkins_sales),
                             gross_income = VALUES(gross_income),
                             expenses = VALUES(expenses),
                             net_income = VALUES(net_income)";
 
     $stmt = $pdo->prepare($insert_update_query);
     $stmt->bindParam(":month_year", $monthYearValue);
+    $stmt->bindParam(":online_sales", $online_total);
+    $stmt->bindParam(":walkins_sales", $walkins_total);
     $stmt->bindParam(":gross_income", $gross_income);
     $stmt->bindParam(":expenses", $total_expenses);
     $stmt->bindParam(":net_income", $net_income);
