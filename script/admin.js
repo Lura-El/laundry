@@ -205,6 +205,7 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
             </tr>
         </thead>
     `;
+    
     $.get("/../laundry/admin/sales.get.php",function(data) { 
 
     data.forEach(result => {
@@ -255,6 +256,7 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
     }).fail(function() {
         console.error("Error: Unable to fetch data.");
     });
+
     
      let tablehead5 = `
         <thead>
@@ -269,13 +271,14 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
             </tr>
         </thead>
     `;
-    $.get("/../laundry/admin/expenses.get.php",function(data) {
+ 
+        $.get("/../laundry/admin/expenses.get.php",function(data) {
         
         let tableBody = "<tbody>";
 
         data.forEach(result => {
      
-            tableBody += "<tr>";
+            tableBody += "<tr>"
             Object.values(result).forEach(value => {
                 tableBody += `<td>${value}</td>`;
             })
@@ -289,6 +292,13 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
         console.error("Error: Unable to fetch data.");
     });
     
+    
+    // message
+
+     $('#message-btn').on('click', function() {
+        let targetdiv = $(this).data('target');
+        $(targetdiv).toggle();
+    });
 
 });
 

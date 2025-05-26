@@ -130,4 +130,13 @@ $(function(){
         }) 
      })
 
+     // message
+
+     $('#message-btn').on('click', function() {
+        let targetdiv = $(this).data('target');
+        $(targetdiv).toggle();
+    });
+
 })
+
+

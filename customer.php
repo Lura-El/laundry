@@ -46,7 +46,6 @@
             <button class="navtwobtns" data-target="#booking">BOOK A SERVICE</button>
             <button class="navtwobtns track" data-target="#trackorder">TRACK ORDER</button>
             <button class="navtwobtns history" data-target="#history">HISTORY</button>
-            <button class="navtwobtns" data-target="#messageus">MESSAGE US</button>
         </div>
     </header>
 
@@ -240,11 +239,19 @@
     <div id="prevOrders"></div>
 </div>
 
-<!-- message us -->
-
-<div id="message">
-    
+<div class="chat-container" id="message">
+    <div class="chat-header">Chat Box</div>
+    <div class="chat-body">
+        <p><strong id="chat-name">e</strong> Hello! How can I help you?</p>
+    </div>
+    <div class="chat-footer">
+        <input type="text" placeholder="Type a message...">
+        <button>Send</button>
+    </div>
 </div>
+
+ <button id="message-btn" data-target="#message">message us  <i class="fa-regular fa-message" ></i></button>
+ 
 <footer>
     <div id="flow">Schedule a service ---> Get notify ---> Pick up ---> Track order ---> Deliver</div>
     <div>Message us any time. We are here for you.</div>
