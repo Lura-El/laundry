@@ -42,6 +42,8 @@ $(function(){
       }
 
     // walkins
+
+    let totalSales = 0;
     
     function fetchData(path, tableHead, htmlTag) {
 
@@ -57,13 +59,18 @@ $(function(){
                 } else if (key === "completed_at") {
                     // Check if completed_at is null, and replace it with "processing"
                     tableBody += (value === null) ? `<td>Processing</td>` : `<td>${formatDate(value)}</td>`;
-                } else {
+                }
+                else {
                     tableBody += `<td>${value}</td>`;
                 }
             });
         tableBody += "</tr>";
-});
 
+        if(result.completed_at){
+            totalSales += Number(result.amount);
+        }
+        
+});
 
         tableBody += "</tbody>";
 
@@ -193,38 +200,84 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
         $(targetdiv).toggle();
     });
 
-     let tablehead4 = `
+
+
+    // inventory and gross sales update, use post method to update the sales then display the 
+    // the sales using table
+
+    //  let tablehead4 = `
+    //     <thead>
+    //         <tr id="tablehead">
+    //             <th>Month-Year</th>
+    //             <th>Online sales</th>
+    //             <th>Walkins sales</th>
+    //             <th>Gross income</th>
+    //             <th>Expenses</th>
+    //             <th>Net income</th>
+    //         </tr>
+    //     </thead>
+    // `;
+    
+    // $.get("/../laundry/admin/sales.get.php",function(data) { 
+
+    // data.forEach(result => {
+
+    //     let monthYear = result.month_year;
+    //     let gross_income = Number(result.gross_income);
+    //     let expenses = Number(result.expenses);
+    //     let netIncome = Number(result.net_income);
+
+
+ let tablehead5 = `
         <thead>
             <tr id="tablehead">
                 <th>Month-Year</th>
-                <th>Online sales</th>
-                <th>Walkins sales</th>
-                <th>Gross income</th>
-                <th>Expenses</th>
-                <th>Net income</th>
+                <th>ELECTRICITY</th>
+                <th>WATER</th>
+                <th>LABOR</th>
+                <th>STOCKS</th>
+                <th>OTHER EXPENSES</th>
+                <th>TOTAL EXPENSES</th>
             </tr>
         </thead>
     `;
-    
-    $.get("/../laundry/admin/sales.get.php",function(data) { 
+ let totalExpenses = 0;
+  
+        $.get("/../laundry/admin/expenses.get.php",function(data) {
+        
+        let tableBody = "<tbody>";
 
-    data.forEach(result => {
-        console.log(result.gross_income);
+        data.forEach(result => {
+     
+            tableBody += "<tr>"
+            Object.values(result).forEach(value => {
+                tableBody += `<td>${value}</td>`;
+            })
+            tableBody += "</tr>";
+            
+             totalExpenses += result.total_expenses;
+        });
 
-        let monthYear = result.month_year;
-        let gross_income = Number(result.gross_income);
-        let expenses = Number(result.expenses);
-        let netIncome = Number(result.net_income);
+        tableBody += "</tbody>";
+
+        $('#table5').html(tablehead5 + tableBody);
+    }).fail(function() {
+        console.error("Error: Unable to fetch data.");
+    });
 
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+
+        let netIncome = Number(totalSales) - Number(totalExpenses);
+        
         var data = google.visualization.arrayToDataTable([
-          ['Month-Year', 'Gross Income', 'Expenses', 'Net Income'],
-          [monthYear, gross_income, expenses, netIncome ],
+          ['Month-Year','Gross Income', 'Total Expenses', 'Net Income'],
+          ['May-2025', totalSales, totalExpenses, netIncome],
       
         ]);
+
 
        var options = {
         title: "Enerbubbles Sales",
@@ -238,60 +291,25 @@ $.get("/../laundry/admin/inventory.get.php",function(data) {
 
         chart.draw(data, options);
       }
-
-      let tableBody = "<tbody>";
+    
+    //   let tableBody = "<tbody>";
      
-            tableBody += "<tr>";
-            Object.values(result).forEach(value => {
-                tableBody += `<td>${value}</td>`;
-            })
-            tableBody += "</tr>";
+    //         tableBody += "<tr>";
+    //         Object.values(result).forEach(value => {
+    //             tableBody += `<td>${value}</td>`;
+    //         })
+    //         tableBody += "</tr>";
    
-        tableBody += "</tbody>";
+    //     tableBody += "</tbody>";
 
-        $('#table4').html(tablehead4 + tableBody);
+    //     $('#table4').html(tablehead4 + tableBody);
 
-    });
+    // });
 
-    }).fail(function() {
-        console.error("Error: Unable to fetch data.");
-    });
+    // }).fail(function() {
+    //     console.error("Error: Unable to fetch data.");
+    // });
 
-    
-     let tablehead5 = `
-        <thead>
-            <tr id="tablehead">
-                <th>Month-Year</th>
-                <th>ELECTRICITY</th>
-                <th>WATER</th>
-                <th>LABOR</th>
-                <th>STOCKS</th>
-                <th>OTHER EXPENSES</th>
-                <th>TOTAL EXPENSES</th>
-            </tr>
-        </thead>
-    `;
- 
-        $.get("/../laundry/admin/expenses.get.php",function(data) {
-        
-        let tableBody = "<tbody>";
-
-        data.forEach(result => {
-     
-            tableBody += "<tr>"
-            Object.values(result).forEach(value => {
-                tableBody += `<td>${value}</td>`;
-            })
-            tableBody += "</tr>";
-        });
-
-        tableBody += "</tbody>";
-
-        $('#table5').html(tablehead5 + tableBody);
-    }).fail(function() {
-        console.error("Error: Unable to fetch data.");
-    });
-    
     
     // message
 
